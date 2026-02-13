@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine 💖</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(to right,#ffd6e8,#ffc0d9); /* Light Pink */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* ✨ Glitter Background */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image: radial-gradient(white 2px, transparent 2px),
+                      radial-gradient(#ff69b4 2px, transparent 2px);
+    background-size: 40px 40px;
+    animation: glitter 4s linear infinite;
+    opacity:0.5;
+    z-index:-1;
+}
+
+@keyframes glitter{
+    0%{background-position:0 0, 20px 20px;}
+    100%{background-position:40px 40px, 60px 60px;}
+}
+
+/* 💖 Moving Hearts */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    0%{ transform: translateY(0); opacity:1; }
+    100%{ transform: translateY(-100vh); opacity:0; }
+}
+
+/* ===== YOUR ORIGINAL DESIGN (UNCHANGED) ===== */
+
+.card{
+    background:#f7f1f1;
+    width:400px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
+
+.card img{
+    width:180px;
+}
+
+h1{
+    color:#c2185b;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+    margin:10px;
+    font-weight:bold;
+}
+
+.yes-btn{
+    background:#ff4d88;
+    color:white;
+}
+
+.no-btn{
+    background:white;
+    border:2px solid gray;
+}
+
+.hidden{
+    display:none;
+}
+
+#bouquetPage{
+    display:none;
+    width:750px;
+    background:#ffe6ec;
+    padding:40px;
+    border-radius:20px;
+}
+
+.flex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.love-box{
+    width:350px;
+}
+
+.love-item{
+    background:#ffc2d1;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+    text-align:center;
+}
+
+.letter-btn{
+    background:#ff2e63;
+    color:white;
+    border-radius:25px;
+    padding:15px 30px;
+}
+
+#letterPage{
+    display:none;
+    background:#fff8f0;
+    width:500px;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="card" id="page1">
+    <img src="image/p1.png">
+    <h1>Hey!</h1>
+    <p>I want to ask you something?</p>
+    <p>Can I?</p>
+    <button class="yes-btn" onclick="yes1()">YES</button>
+    <button class="no-btn" onclick="showNo()">NO</button>
+</div>
+
+<!-- PAGE 2 (NO) -->
+<div class="card hidden" id="noPage">
+    <img src="image/angry_cat_only.png">
+    <h1>How Dare You!</h1>
+    <p>I will go back to say YES!</p>
+    <button class="yes-btn" onclick="goBack()">Go Back</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card hidden" id="page2">
+    <img src="image/hug_bear_only.png">
+    <h1>GOOD MY CUTIEPIE 😍</h1>
+    <p>Most important question are you ready?? 😁</p>
+    <button class="yes-btn" onclick="showBouquet()">Yes!!</button>
+</div>
+
+<!-- PAGE 4 -->
+<div id="bouquetPage">
+    <div class="flex">
+        <img src="image/h.jpg" width="300px" height="500px">
+        <div class="love-box">
+            <div class="love-item"><b>ENGLISH</b><br>I Love You</div>
+            <div class="love-item"><b>URDU</b><br>میں تم سے پیار کرتا ہوں</div>
+            <div class="love-item"><b>HINDI</b><br>मैं तुमसे प्यार करता हूँ</div>
+            <div class="love-item"><b>FRENCH</b><br>Je t'aime</div>
+            <div class="love-item"><b>SPANISH</b><br>Te Amo</div>
+        </div>
+    </div>
+
+    <div style="text-align:center;margin-top:30px;">
+        <button class="letter-btn" onclick="showLetter()">A Letter For You Click Hear 💌</button>
+    </div>
+</div>
+
+<!-- PAGE 5 -->
+<div id="letterPage">
+    <h2>My Dearest Valentine 💕</h2>
+    <p>
+    From the moment you walked into my life, everything became more beautiful.
+    Your smile lights up my darkest days, and your love makes me feel like the
+    luckiest person in the world.
+    </p>
+
+    <p>
+    Every moment with you is a treasure I hold close to my heart.
+    You are my best friend, my soulmate, and my forever love.
+    </p>
+
+    <p>
+    On this Valentine’s Day and every day after,
+    I promise to cherish you, to make you laugh,
+    and to love you with all my heart.
+    </p>
+
+    <h3>Forever Yours ❤️</h3>
+</div>
+
+<script>
+function yes1(){
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+}
+
+function showNo(){
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("noPage").classList.remove("hidden");
+}
+
+function goBack(){
+    document.getElementById("noPage").classList.add("hidden");
+    document.getElementById("page1").classList.remove("hidden");
+}
+
+function showBouquet(){
+    document.getElementById("page2").style.display="none";
+    document.getElementById("bouquetPage").style.display="block";
+}
+
+function showLetter(){
+    document.getElementById("bouquetPage").style.display="none";
+    document.getElementById("letterPage").style.display="block";
+}
+
+/* 💖 Floating Hearts Generator */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random()*3+3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{ heart.remove(); },6000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
